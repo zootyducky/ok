@@ -30,8 +30,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index/templates/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7">
-                  <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+                <state vertical-scroll-proportion="-1.02">
+                  <caret line="50" column="111" selection-start-line="50" selection-start-column="111" selection-end-line="50" selection-end-column="111" />
                   <folding />
                 </state>
               </provider>
@@ -80,8 +80,8 @@
         <option value="$PROJECT_DIR$/index/templates/css/theme.css" />
         <option value="$PROJECT_DIR$/index/templates/js/heya.client.js" />
         <option value="$PROJECT_DIR$/index/templates/js/heya.client.openk.js" />
-        <option value="$PROJECT_DIR$/index/templates/index.html" />
         <option value="$PROJECT_DIR$/index/templates/css/openKakao.css" />
+        <option value="$PROJECT_DIR$/index/templates/index.html" />
       </list>
     </option>
   </component>
@@ -702,14 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index/templates/portfolio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64705884">
-          <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index/templates/js/heya.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -740,8 +732,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7">
-          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        <state vertical-scroll-proportion="-1.02">
+          <caret line="50" column="111" selection-start-line="50" selection-start-column="111" selection-end-line="50" selection-end-column="111" />
           <folding />
         </state>
       </provider>
