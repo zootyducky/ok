@@ -51,27 +51,6 @@ $(document).ready(function () {
 
     $(".container .social a").tooltip();
 
-    /* $("#facebook_auth_btn").on('click', function(ev) {
-        if (!fbase.getAuth()) {
-            fbase.authWithOAuthPopup("facebook", function (err, auth) {
-                if (err) {
-                    heya.util.notification("Login Failed" + err, function() {
-                        location.reload();
-                    });
-                } else {
-                    domself.uid = auth.uid;
-
-                    $("#facebook_auth_btn").removeClass("btn-danger");
-                    $("#facebook_auth_btn").addClass("btn-primary");
-                    $("#refresh_btn").trigger("click");
-                }
-            }, {
-                remember: "sessionOnly"
-                , scope: "email,user_likes"
-            });
-        }
-    }); */
-
     $(".openk-sort ul.nav-pills li a").on("click", function(ev) {
         $(this).parent().parent().children("li").removeClass("active");
         $(this).parent().addClass("active");
