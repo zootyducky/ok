@@ -70,78 +70,83 @@ $(document).ready(function () {
         }
     }); */
 
-    $(".pagination ul").empty();
+    $(".openk-sort ul.nav-pills li a").on("click", function(ev) {
+        $(this).parent().parent().children("li").removeClass("active");
+        $(this).parent().addClass("active");
 
-    fbase.child(fver + "/threads/").limitToLast(750).once("value", function(threadSnap) {
-        if ($loading) $loading.modal('hide');
-        if (threadSnap.val()) {
-            domSelf.threads = threadSnap.val();
-            domSelf.threadKeys = Object.keys(domSelf.threads);
-            var threadCount = domSelf.threadKeys.length;
-            var pageCount = Math.ceil(threadCount / 15);
+        $(".pagination ul").empty();
 
-            for (var i = 1; i <= pageCount; i++) {
-                var $liPage = '<li><a href="#" data-page="' + i.toString() + '">' + i.toString() + '</a></li>'
-                $(".pagination ul").append($liPage);
-            }
+        fbase.child(fver + "/threads/").limitToLast(750).once("value", function(threadSnap) {
+            if ($loading) $loading.modal('hide');
+            if (threadSnap.val()) {
+                domSelf.threads = threadSnap.val();
+                domSelf.threadKeys = Object.keys(domSelf.threads);
+                var threadCount = domSelf.threadKeys.length;
+                var pageCount = Math.ceil(threadCount / 15);
 
-            if (pageCount > 749) {
-                $(".pagination ul").prepend('<li><a href="#" data-page="prev">Prev</a></li>');
-                $(".pagination ul").append('<li><a href="#" data-page="next">Next</a></li>');
-            }
-
-            $('.pagination ul li a').on('click', function(ev) {
-                ev.preventDefault();
-                $(".openk-contents").empty();
-
-                if ($(this).data('page') != 'next' || $(this).data('page') != 'prev') {
-                    domSelf.page = $(this).data('page');
-                    var threadCnt = domSelf.threadKeys.length;
-                    var startIdx = (domSelf.page - 1) * 15;
-                    var endIdx = (domSelf.page * 15 > threadCnt) ? threadCnt : domSelf.page * 15 - 1;
-                    var pageKeys = domSelf.threadKeys.slice(startIdx, endIdx);
-
-                    $.each(pageKeys, function(idx, threadKey) {
-                        var $thread = domSelf.threads[threadKey];
-
-                        if (idx % 3 == 0) $('.openk-contents').append('<div class="row post_row"></div>');
-
-                        var $post = $('<div class="span4 post"></div>');
-                        if (idx % 3 == 2 || idx == pageKeys.length) $post.addClass("last");
-
-                        var inDate = new Date($thread.inDate);
-                        var $postContent = $('<div class="text">' +
-                            '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
-                            '<span class="date">' + heya.util.date.formatDateTime(inDate) + '</span>' +
-                            '<p>' + $thread.description + '</p></div>' +
-                            '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6>' +
-                            '<p>' + $thread.totalCount + ' Clicks</p></div>' +
-                            '<a class="plus_wrapper" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#"><span>&#43;</span></a>');
-                        $post.append($postContent);
-
-                        $('.openk-contents .post_row:last-child').append($post);
-                    });
-
-                    $('.openk-contents .post_row a').on("click", function(ev) {
-                        ev.preventDefault();
-                        var $target = fbase.child(fver + "/threads/" + $(this).data("key"));
-                        $target.child("dailyCount").transaction(function(currentSnap) {
-                            return currentSnap + 1;
-                        });
-                        $target.child("weeklyCount").transaction(function(currentSnap) {
-                            return currentSnap + 1;
-                        });
-                        $target.child("totalCount").transaction(function(currentSnap) {
-                            return currentSnap + 1;
-                        }, function(err, committed, cntSnap) {
-                            location.href = $(this).data('url');
-                        });
-                    });
+                for (var i = 1; i <= pageCount; i++) {
+                    var $liPage = '<li><a href="#" data-page="' + i.toString() + '">' + i.toString() + '</a></li>'
+                    $(".pagination ul").append($liPage);
                 }
-            });
 
-            $('.pagination ul li a[data-page="' + domSelf.page + '"]').trigger('click');
-        }
+                if (pageCount > 749) {
+                    $(".pagination ul").prepend('<li><a href="#" data-page="prev">Prev</a></li>');
+                    $(".pagination ul").append('<li><a href="#" data-page="next">Next</a></li>');
+                }
+
+                $('.pagination ul li a').on('click', function(ev) {
+                    ev.preventDefault();
+                    $(".openk-contents").empty();
+
+                    if ($(this).data('page') != 'next' || $(this).data('page') != 'prev') {
+                        domSelf.page = $(this).data('page');
+                        var threadCnt = domSelf.threadKeys.length;
+                        var startIdx = (domSelf.page - 1) * 15;
+                        var endIdx = (domSelf.page * 15 > threadCnt) ? threadCnt : domSelf.page * 15 - 1;
+                        var pageKeys = domSelf.threadKeys.slice(startIdx, endIdx);
+
+                        $.each(pageKeys, function(idx, threadKey) {
+                            var $thread = domSelf.threads[threadKey];
+
+                            if (idx % 3 == 0) $('.openk-contents').append('<div class="row post_row"></div>');
+
+                            var $post = $('<div class="span4 post"></div>');
+                            if (idx % 3 == 2 || idx == pageKeys.length) $post.addClass("last");
+
+                            var inDate = new Date($thread.inDate);
+                            var $postContent = $('<div class="text">' +
+                                '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
+                                '<span class="date">' + heya.util.date.formatDateTime(inDate) + '</span>' +
+                                '<p>' + $thread.description + '</p></div>' +
+                                '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6>' +
+                                '<p>' + $thread.totalCount + ' Clicks</p></div>' +
+                                '<a class="plus_wrapper" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#"><span>&#43;</span></a>');
+                            $post.append($postContent);
+
+                            $('.openk-contents .post_row:last-child').append($post);
+                        });
+
+                        $('.openk-contents .post_row a').on("click", function(ev) {
+                            ev.preventDefault();
+                            var $target = fbase.child(fver + "/threads/" + $(this).data("key"));
+                            $target.child("dailyCount").transaction(function(currentSnap) {
+                                return currentSnap + 1;
+                            });
+                            $target.child("weeklyCount").transaction(function(currentSnap) {
+                                return currentSnap + 1;
+                            });
+                            $target.child("totalCount").transaction(function(currentSnap) {
+                                return currentSnap + 1;
+                            }, function(err, committed, cntSnap) {
+                                location.href = $(this).data('url');
+                            });
+                        });
+                    }
+                });
+
+                $('.pagination ul li a[data-page="' + domSelf.page + '"]').trigger('click');
+            }
+        });
     });
 
     $('input#add_subject').keypress(function(ev) {
@@ -204,5 +209,9 @@ $(document).ready(function () {
         }
 
         $(this).parent().children('input[type="text"]').val("");
+    });
+
+    $(function() {
+        $('.openk-sort ul.nav-pills li[data-sort="hot"] a').trigger("click");
     });
 });
