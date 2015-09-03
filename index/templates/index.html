@@ -18,6 +18,9 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/lib/isotope.css" %}" />
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+    <script src="{% static "js/heya.client.js" %}"></script>
+    <script src="{% static "js/heya.client.openk.js" %}"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-static-top">
@@ -33,7 +36,7 @@
             </a>
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
-                    <li><a href="#">HOME</a></li>
+                    <li><a href="http://heya.chat">HEYA !</a></li>
                 </ul>
             </div>
         </div>
@@ -49,11 +52,15 @@
 
                         <div class="box">
                             <div class="box_cont">
-                                <div class="form">
-                                    <form>
-                                        <input type="text" class="input-block-level" placeholder="URL" />
-                                        <input type="text" class="input-block-level" placeholder="Description (Optional)" />
-                                    </form>
+                                <div class="form form-horizontal">
+                                    <div class="form-group">
+                                        <input type="text" id="add_subject" class="input-block-level" placeholder="제목" />
+                                        <input type="text" id="add_url" class="input-block-level" placeholder="URL" />
+                                        <input type="text" id="add_description" class="input-block-level" placeholder="설명 (Optional)" />
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <p id="error_message" class="box-error"></p>
+                                    </div>
                                     <button type="button" class="btn btn-large btn-submit">ADD</button>
                                 </div>
 
@@ -94,203 +101,17 @@
                 </div>
             </div>
 
-            <!-- Post Row -->
-            <div class="row post_row">
-                <!-- Post -->
-                <div class="span4 post">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                            There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                    <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-
-                <!-- Post -->
-                <div class="span4 post">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                            There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                    <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-
-                <!-- Post -->
-                <div class="span4 post last">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                            There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                    <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Post Row -->
-            <div class="row post_row">
-                <!-- Post -->
-                <div class="span4 post">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                            There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                    <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-
-                <!-- Post -->
-                <div class="span4 post">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                            There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                    <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-
-                <!-- Post -->
-                <div class="span4 post last">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                            There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                    <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Post Row -->
-            <div class="row post_row lastpost_row">
-                <!-- Post -->
-                <div class="span4 post">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                            There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                   <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-
-                <!-- Post -->
-                <div class="span4 post">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                            There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                   <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-
-                <!-- Post -->
-                <div class="span4 post last">
-                    <div class="img">
-                        <a href="blogpost.html"></a>
-                    </div>
-                    <div class="text">
-                        <h5><a href="blogpost.html">Clean Canvas beautiful responsive theme.</a></h5>
-                        <span class="date">Wed, 12 Dec.</span>
-                        <p>
-                           There are many variations of passages of generators on the  embarrassing hidden in  slightly distracted by these distribution of letters, as opposed.</p>
-                    </div>
-                    <div class="author_box">
-                        <h6>Alejandra Galvan</h6>
-                        <p>Creative Director</p>
-                    </div>
-                    <a class="plus_wrapper" href="blogpost.html">
-                        <span>&#43;</span>
-                    </a>
-                </div>
-            </div>
-            <div class="pagination">
-                <ul>
-                    <li><a href="#">Prev</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">Next</a></li>
+            <div class="span12 openk-sort">
+                <ul class="nav nav-pills">
+                    <li data-sort="hot" class="active"><a href="#">인기순</a></li>
+                    <li data-sort="new"><a href="#">최신순</a></li>
                 </ul>
+            </div>
+
+            <div class="openk-contents"></div>
+
+            <div class="pagination text-center">
+                <ul></ul>
             </div>
         </div>
     </div>
@@ -339,7 +160,7 @@
                     </div>
                     <div class="row copyright">
                         <div class="span12">
-                            © 2015 KYYB.co. All rights reserved
+                            © 2015 <a href="http://heya.chat">KYYB.co.</a> All rights reserved
                         </div>
                     </div>
                 </div>

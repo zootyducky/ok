@@ -99,9 +99,6 @@
 .openk .submit-box .box .form {
 	margin-bottom: 15px;
 }
-.openk .submit-box .box .form form{
-	margin: 0;
-}
 .openk .submit-box .box .form input[type="text"]{
 	border-radius: 3px;
 	font-size: 16px;
@@ -109,6 +106,9 @@
 	margin-bottom: 16px;
 	height: 27px;
 	color: black;
+}
+.openk .submit-box .box .box-error {
+	color: #ff0000;
 }
 .openk .header .btn-submit{
     text-transform: uppercase;
@@ -127,6 +127,9 @@
 }
 .openk .header .btn-submit:hover{
     background: #252528;
+}
+.openk .openk-sort {
+	float: right;
 }
 .openk #filters {
 	list-style-type: none;
@@ -284,7 +287,7 @@
 /*pagination*/
 .openk .pagination {
 	margin: 35px auto 0;
-	width: 26%;
+	width: 50%;
 }
 
 /*gallery container*/
@@ -381,6 +384,7 @@
 		width: 65%;
 		margin: 0 auto;
 		margin-bottom: 50px;
+		padding-top: 15px;
 	}
 	.openk .post_row .post .img {
 		float: left;
@@ -428,7 +432,7 @@
 	.openk .post_row .post{
 		padding-top: 5px;
 		margin: 0 auto 50px;
-		width: 72%;
+		width: 88%;
 	}
 	.openk .post_row .post .img {
 		float: none;
