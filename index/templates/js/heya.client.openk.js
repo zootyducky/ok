@@ -49,6 +49,8 @@ $(document).ready(function () {
     domSelf.page = (queryString && queryString.page && queryString.page < 11) ? parseInt(queryString.page) : 1;
     var $loading = heya.data.loading();
 
+    $(".container .social a").tooltip();
+
     /* $("#facebook_auth_btn").on('click', function(ev) {
         if (!fbase.getAuth()) {
             fbase.authWithOAuthPopup("facebook", function (err, auth) {
