@@ -197,7 +197,9 @@ $(document).ready(function () {
                 $('input#add_subject').val('');
                 $('input#add_url').val('');
                 $('input#add_description').val('');
-                heya.util.notification("추가되었습니다");
+                heya.util.notification("추가되었습니다", function() {
+                    location.reload();
+                });
             });
         }
 
