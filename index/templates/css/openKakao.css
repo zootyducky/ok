@@ -131,34 +131,6 @@
 .openk .openk-sort {
 	float: right;
 }
-.openk #filters {
-	list-style-type: none;
-	height: 30px;
-	margin-bottom: 40px;
-	text-align: center;
-	margin-top: -20px;
-}
-.openk #filters li {
-	display: inline-block;
-	font-size: 20px;
-	margin: 0px 6px;
-}
-.openk #filters li.separator {
-	color: #c0c0c0;
-	font-weight: lighter;
-}
-.openk #filters li a {
-	color: #3f3f3f;
-	font-style: italic;
-	-webkit-transition: color .2s;
-	-moz-transition: color .2s;
-	-ms-transition: color .2s;
-	transition: color .2s;
-}
-.openk #filters li a:hover,
-.openk #filters li a.active {
-	color: #1189d9;
-}
 .openk .post_row{
 	margin-top: 10px;
 	margin-left: 0;
@@ -290,62 +262,6 @@
 	width: 50%;
 }
 
-/*gallery container*/
-.openk #gallery_container {
-	margin-bottom: 50px;
-}
-.openk #gallery_container .photo {
-	width: 285px;
-	margin: 5px;
-	float: left;
-	position: relative;
-}
-.openk #gallery_container .photo:hover .mask {
-	display: block;
-	opacity: 1;
-	filter: alpha(opacity = 100);
-}
-
-.openk #gallery_container .photo img { }
-
-.openk #gallery_container .photo .mask {
-	position: absolute;
-	opacity: 0;
-	filter: alpha(opacity = 0);
-	box-shadow: 0px 1px 6px 2px #b1b1b1;
-	top: 0px;
-	left: 0px;
-	border-radius: 5px;
-	height: 100%;
-	padding: 0px 20px;
-	width: 245px;
-	background: rgba(17, 137, 217, 0.5);
-	-webkit-transition: opacity .25s ease-in-out;
-    -moz-transition: opacity .25s ease-in-out;
-    transition: opacity .25s ease-in-out;
-}
-.openk #gallery_container .photo .mask h3 {
-	color: #fff;
-	font-size: 22px;
-	position: relative;
-	top: 39%;
-}
-.openk #gallery_container .photo .mask small {
-	color: rgb(240, 240, 240);
-	font-size: 15px;
-	font-style: italic;
-	position: relative;
-	top: 35%;
-	display: block;
-}
-.openk #gallery_container .photo .mask .more {
-	color: #fff;
-	font-size: 30px;
-	font-weight: bold;
-	position: absolute;
-	bottom: 7%;
-	left: 47%;
-}
 /* Responsive
 -------------------------------------------------- */
 
@@ -452,19 +368,5 @@
 	}
 	.openk .pagination {
 		width: 72%;
-	}
-
-	.openk #filters li{
-		margin: 0px 4px;
-	}
-	.openk #filters li a{
-		font-size: 18px;
-	}
-
-	.openk #gallery_container .photo{
-		margin-left: 35px;
-	}
-	.openk #gallery_container .photo img{
-		left: 10%;
 	}
 }
