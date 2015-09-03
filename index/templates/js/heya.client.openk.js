@@ -128,6 +128,8 @@ $(document).ready(function () {
 
                         $('.openk-contents .post_row a').on("click", function(ev) {
                             ev.preventDefault();
+
+                            var okUrl = $(this).data('url');
                             var $target = fbase.child(fver + "/threads/" + $(this).data("key"));
                             $target.child("dailyCount").transaction(function(currentSnap) {
                                 return currentSnap + 1;
@@ -138,7 +140,7 @@ $(document).ready(function () {
                             $target.child("totalCount").transaction(function(currentSnap) {
                                 return currentSnap + 1;
                             }, function(err, committed, cntSnap) {
-                                location.href = $(this).data('url');
+                                location.href = okUrl;
                             });
                         });
                     }
