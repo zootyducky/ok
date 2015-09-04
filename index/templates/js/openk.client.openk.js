@@ -1,12 +1,12 @@
 /*
- * @(#)/heya.client.openk.js  0.9, 2015-09-02
+ * @(#)/openk.client.openk.js  0.9, 2015-09-02
  * 
- * Heya의 openkakao bbs (Front end) 환경을 위한 JavaScript
+ * OPEN KAKAO의 openkakao bbs (Front end) 환경을 위한 JavaScript
  *
- * @author  Hyuk Jun Kim
+ * @author  HJ
  * @version 1.0, 2015-09-02
  */
-var heya = heya || {};
+var openk = openk || {};
 var fbase = new Firebase("https://openkakao.firebaseio.com/");
 var fver = "v1_0";
 
@@ -44,14 +44,16 @@ $(function() {
 
 $(document).ready(function () {
     var domSelf = this;
-    var queryString = heya.util.queryString();
+    var queryString = openk.util.queryString();
 
     domSelf.page = (queryString && queryString.page && queryString.page < 11) ? parseInt(queryString.page) : 1;
-    var $loading = heya.data.loading();
+    var $loading = openk.data.loading();
 
     $(".container .social a").tooltip();
 
     $(".openk-sort ul.nav-pills li a").on("click", function(ev) {
+        ev.preventDefault();
+
         $(this).parent().parent().children("li").removeClass("active");
         $(this).parent().addClass("active");
 
@@ -97,7 +99,7 @@ $(document).ready(function () {
                             var inDate = new Date($thread.inDate);
                             var $postContent = $('<div class="text">' +
                                 '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
-                                '<span class="date">' + heya.util.date.formatDateTime(inDate) + '</span>' +
+                                '<span class="date">' + openk.util.date.formatDateTime(inDate) + '</span>' +
                                 '<p>' + $thread.description + '</p></div>' +
                                 '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6>' +
                                 '<p>' + $thread.totalCount + ' Clicks</p></div>' +
@@ -185,7 +187,7 @@ $(document).ready(function () {
                 $('input#add_subject').val('');
                 $('input#add_url').val('');
                 $('input#add_description').val('');
-                heya.util.notification("추가되었습니다", function() {
+                openk.util.notification("추가되었습니다", function() {
                     location.reload();
                 });
             });

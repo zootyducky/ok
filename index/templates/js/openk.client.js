@@ -1,19 +1,19 @@
 /*
- * @(#)/heya.client.js  0.9, 2015-06-26
+ * @(#)/openk.client.js  0.9, 2015-06-26
  * 
- * Heya의 admin client (Front end) 환경을 위한 JavaScript
+ * OPEN KAKAO의 admin client (Front end) 환경을 위한 JavaScript
  *
- * @author  Hyuk Jun Kim
+ * @author  HJ
  * @version 0.9, 2015-06-26
  */
-var heya = heya || {};
+var openk = openk || {};
 var fver = "v1_0";
 
-heya.data = heya.data || {
+openk.data = openk.data || {
     dataset: function(reqUrl, voParam, callback) {
         var me = this;
         var dataset = {};
-        var $loading = heya.data.loading();
+        var $loading = openk.data.loading();
         $loading.modal({ keyboard: false });
 
         $.ajax({
@@ -62,7 +62,7 @@ heya.data = heya.data || {
     }
 };
 
-heya.util = heya.util || {
+openk.util = openk.util || {
     downloadCSV: function (objArray, strFileName) {
         var csvSelf = this;
         csvSelf.download = function (strData, strFileName) {
@@ -252,7 +252,7 @@ heya.util = heya.util || {
 
     , removeCookies: function (cookies) {
         $.each(cookies, function(idx, val) {
-            heya.util.setCookie(val, '', -1);
+            openk.util.setCookie(val, '', -1);
         });
 
         location.reload();
@@ -280,7 +280,7 @@ heya.util = heya.util || {
     }
 };
 
-heya.util.date = heya.util.date || {
+openk.util.date = openk.util.date || {
     pad: function (value) {
         if (value < 10) {
             return "0" + value;
