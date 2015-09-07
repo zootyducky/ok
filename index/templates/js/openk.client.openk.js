@@ -53,6 +53,7 @@ $(document).ready(function () {
 
     $(".openk-sort ul.nav-pills li a").on("click", function(ev) {
         ev.preventDefault();
+        domSelf.threads = {};
 
         if ($(this).parent().data('sort') == 'hot') {
             openk.util.notification("Facebook으로 공유해주세요 !", function() {
