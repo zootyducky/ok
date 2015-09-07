@@ -109,11 +109,10 @@ $(document).ready(function () {
                             var inDate = new Date($thread.inDate);
                             var $postContent = $('<div class="text">' +
                                 '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
-                                '<span class="date">' + openk.util.date.formatDateTime(inDate) + '</span>' +
+                                '<span class="date">' + $thread.totalCount + ' Clicks</span>' +
                                 '<p>' + $thread.description + '</p></div>' +
-                                '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6>' +
-                                '<p>' + $thread.totalCount + ' Clicks</p></div>' +
-                                '<a class="plus_wrapper" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#"><span>&#43;</span></a>');
+                                '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6></div>' +
+                                '<a class="plus_wrapper" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#"><span>채팅 열기 <i class="icon-chevron-right"></i></span></a>');
                             $post.append($postContent);
 
                             $('.openk-contents .post_row:last-child').append($post);
