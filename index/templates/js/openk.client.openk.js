@@ -60,7 +60,7 @@ $(document).ready(function () {
                   method: 'share',
                   href: 'http://chatkakao.com',
                 }, function(response){});
-            });
+            }, function() {});
         }
 
         $(this).parent().parent().children("li").removeClass("active");
