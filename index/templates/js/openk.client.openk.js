@@ -54,6 +54,15 @@ $(document).ready(function () {
     $(".openk-sort ul.nav-pills li a").on("click", function(ev) {
         ev.preventDefault();
 
+        if ($(this).parent().data('sort') == 'hot') {
+            openk.util.notification("Facebook으로 공유해주세요 !", function() {
+                FB.ui({
+                  method: 'share',
+                  href: 'http://chatkakao.com',
+                }, function(response){});
+            });
+        }
+
         $(this).parent().parent().children("li").removeClass("active");
         $(this).parent().addClass("active");
 
@@ -123,7 +132,16 @@ $(document).ready(function () {
                             $target.child("totalCount").transaction(function(currentSnap) {
                                 return currentSnap + 1;
                             }, function(err, committed, cntSnap) {
-                                location.href = okUrl;
+                                openk.util.notification("Facebook으로 공유해주고 넘어가세요 !", function() {
+                                    FB.ui({
+                                      method: 'share',
+                                      href: 'http://chatkakao.com',
+                                    }, function(response){
+                                        location.href = okUrl;
+                                    });
+                                }, function() {
+                                    location.href = okUrl;
+                                });
                             });
                         });
                     }
@@ -197,6 +215,6 @@ $(document).ready(function () {
     });
 
     $(function() {
-        $('.openk-sort ul.nav-pills li[data-sort="hot"] a').trigger("click");
+        $('.openk-sort ul.nav-pills li[data-sort="new"] a').trigger("click");
     });
 });
