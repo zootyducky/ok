@@ -112,7 +112,8 @@ $(document).ready(function () {
                                 '<span class="date">' + $thread.totalCount + ' Clicks</span>' +
                                 '<p>' + $thread.description + '</p></div>' +
                                 '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6></div>' +
-                                '<a class="plus_wrapper" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#"><span>채팅 열기 <i class="icon-chevron-right"></i></span></a>');
+                                '<a class="plus_wrapper text-right" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' +
+                                '<span>채팅 열기 &#62&#62</span></a>');
                             $post.append($postContent);
 
                             $('.openk-contents .post_row:last-child').append($post);
