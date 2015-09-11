@@ -77,7 +77,7 @@ $(document).ready(function () {
                 domSelf.threads = threadSnap.val();
                 domSelf.threadKeys = Object.keys(domSelf.threads);
                 var threadCount = domSelf.threadKeys.length;
-                var pageCount = Math.ceil(threadCount / 15);
+                var pageCount = Math.ceil(threadCount / 30);
 
                 for (var i = 1; i <= pageCount; i++) {
                     var $liPage = '<li><a href="#" data-page="' + i.toString() + '">' + i.toString() + '</a></li>'
@@ -192,13 +192,13 @@ $(document).ready(function () {
                     , "subject": subject
                     , "URL": url
                     , "description": description
-                    , "inDate": (-1 * Firebase.ServerValue.TIMESTAMP)
+                    , "inDate": (-1 * parseInt(Firebase.ServerValue.TIMESTAMP))
                     , "dailyCount": 0
                     , "weeklyCount": 0
                     , "totalCount": 0
                 };
 
-                $target.setPriority(Firebase.ServerValue.TIMESTAMP);
+                //$target.setPriority(-1 * Firebase.ServerValue.TIMESTAMP);
                 $target.push($thread);
                 fbase.child(fver + "/threadCount/").transaction(function(currentCount) {
                     return currentCount + 1;
