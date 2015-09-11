@@ -115,8 +115,6 @@ $(document).ready(function () {
     });
 
     domSelf.render = function(threads) {
-        domSelf.prevChildKey = prevChildKey;
-
         var idx = 0
         $.each(threads, function(key, val) {
             var $thread = val;
