@@ -96,8 +96,8 @@ $(document).ready(function () {
                 if ($(this).data('page') != 'next' || $(this).data('page') != 'prev') {
                     domSelf.page = $(this).data('page');
 
-                    var startIdx = (domSelf.page - 1) * 15;
-                    var endIdx = (domSelf.page * 15 > threadCnt) ? threadCnt : domSelf.page * 15 - 1;
+                    //var startIdx = (domSelf.page - 1) * 15;
+                    //var endIdx = (domSelf.page * 15 > threadCnt) ? threadCnt : domSelf.page * 15 - 1;
                 }
 
             })
