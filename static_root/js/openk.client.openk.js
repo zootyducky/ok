@@ -95,8 +95,7 @@ $(document).ready(function () {
             fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(750).on("child_added", function(snap, prevChildKey) {
                 domSelf.prevChildKey = prevChildKey;
 
-                domSelf.render(snap.val());
-
+                domSelf.render(snap.key(), snap.val());
 
                 /* $('.pagination ul li a').on('click', function(ev) {
                     ev.preventDefault();
@@ -114,15 +113,16 @@ $(document).ready(function () {
 
     });
 
-    domSelf.render = function(threads) {
+    domSelf.render = function(key, val) {
+
         var idx = 0
-        $.each(threads, function(key, val) {
+        //$.each(threads, function(key, val) {
             var $thread = val;
 
             if (idx % 3 == 0) $('.openk-contents').append('<div class="row post_row"></div>');
 
             var $post = $('<div class="span4 post"></div>');
-            if (idx % 3 == 2 || idx == pageKeys.length) $post.addClass("last");
+            if (idx % 3 == 2) $post.addClass("last");
 
             var $postContent = $('<div class="text">' +
                 '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
@@ -136,7 +136,7 @@ $(document).ready(function () {
             $('.openk-contents .post_row:last-child').append($post);
 
             idx++;
-        });
+        //});
 
         $('.openk-contents .post_row a').on("click", function(ev) {
             ev.preventDefault();
