@@ -64,7 +64,7 @@ $(document).ready(function () {
             }, function() {});
         }
 
-        var sort = ($(this).parent().data('sort') == 'hot') ? "totalCount" : "inDate";
+        var sort = ($(this).parent().data('sort') == 'hot') ? "totalCount" : "index";
 
         $(this).parent().parent().children("li").removeClass("active");
         $(this).parent().addClass("active");
