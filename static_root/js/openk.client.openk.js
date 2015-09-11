@@ -81,14 +81,14 @@ $(document).ready(function () {
                 $(".pagination ul").append($liPage);
             }
 
-            if (domSelf.page < 10 && domSelf.pageCount > 10) {
+            /* if (domSelf.page < 10 && domSelf.pageCount > 10) {
                 $(".pagination ul").append('<li><a href="#" data-page="next">Next</a></li>');
             } else if (domSelf.page > 10) {
                 $(".pagination ul").prepend('<li><a href="#" data-page="prev">Prev</a></li>');
             } else {
                 $(".pagination ul").prepend('<li><a href="#" data-page="prev">Prev</a></li>');
                 $(".pagination ul").append('<li><a href="#" data-page="next">Next</a></li>');
-            }
+            } */
 
             $('.pagination ul li a').on('click', function(ev) {
                 ev.preventDefault();
