@@ -117,6 +117,7 @@ $(document).ready(function () {
 
         var idx = 0
         //$.each(threads, function(key, val) {
+            var threadKey = key;
             var $thread = val;
 
             if (idx % 3 == 0) $('.openk-contents').append('<div class="row post_row"></div>');
