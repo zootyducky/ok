@@ -64,12 +64,14 @@ $(document).ready(function () {
             }, function() {});
         }
 
+        var sort = ($(this).parent().data('sort') == 'hot') ? "totalCount" : "inDate";
+
         $(this).parent().parent().children("li").removeClass("active");
         $(this).parent().addClass("active");
 
         $(".pagination ul").empty();
 
-        fbase.child(fver + "/threads/").limitToLast(750).once("value", function(threadSnap) {
+        fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(15).once("value", function(threadSnap) {
             if ($loading) $loading.modal('hide');
             if (threadSnap.val()) {
                 domSelf.threads = threadSnap.val();
@@ -106,7 +108,6 @@ $(document).ready(function () {
                             var $post = $('<div class="span4 post"></div>');
                             if (idx % 3 == 2 || idx == pageKeys.length) $post.addClass("last");
 
-                            var inDate = new Date($thread.inDate);
                             var $postContent = $('<div class="text">' +
                                 '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
                                 '<span class="date">' + $thread.totalCount + ' Clicks</span>' +
@@ -120,18 +121,18 @@ $(document).ready(function () {
                         });
 
                         $('.openk-contents .post_row a').on("click", function(ev) {
-                            ev.preventDefault();
+                                ev.preventDefault();
 
                             var okUrl = $(this).data('url');
                             var $target = fbase.child(fver + "/threads/" + $(this).data("key"));
                             $target.child("dailyCount").transaction(function(currentSnap) {
-                                return currentSnap + 1;
+                                return currentSnap - 1;
                             });
                             $target.child("weeklyCount").transaction(function(currentSnap) {
-                                return currentSnap + 1;
+                                return currentSnap - 1;
                             });
                             $target.child("totalCount").transaction(function(currentSnap) {
-                                return currentSnap + 1;
+                                return currentSnap - 1;
                             }, function(err, committed, cntSnap) {
                                 openk.util.notification("잠깐! 친구들을 위해 Facebook으로 공유해주시겠어요?", function() {
                                     FB.ui({
@@ -187,11 +188,11 @@ $(document).ready(function () {
                 var threadCount = countSnap.val();
                 var $target = fbase.child(fver + "/threads/");
                 var $thread = {
-                    "index": (countSnap.val() + 1)
+                    "index": (-1 * (countSnap.val() + 1))
                     , "subject": subject
                     , "URL": url
                     , "description": description
-                    , "inDate": Firebase.ServerValue.TIMESTAMP
+                    , "inDate": (-1 * Firebase.ServerValue.TIMESTAMP)
                     , "dailyCount": 0
                     , "weeklyCount": 0
                     , "totalCount": 0
