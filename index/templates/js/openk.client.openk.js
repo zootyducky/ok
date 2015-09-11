@@ -95,6 +95,7 @@ $(document).ready(function () {
             fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(750).on("child_added", function(snap, prevChildKey) {
                 domSelf.prevChildKey = prevChildKey;
 
+                $(".openk-contents").empty();
                 domSelf.render(snap.key(), snap.val());
 
                 /* $('.pagination ul li a').on('click', function(ev) {

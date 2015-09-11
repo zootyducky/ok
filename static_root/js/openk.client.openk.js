@@ -53,6 +53,8 @@ $(document).ready(function () {
 
     $(".openk-sort ul.nav-tabs li a").on("click", function(ev) {
         ev.preventDefault();
+
+
         domSelf.threads = {};
 
         if ($(this).parent().data('sort') == 'hot') {
@@ -95,6 +97,7 @@ $(document).ready(function () {
             fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(750).on("child_added", function(snap, prevChildKey) {
                 domSelf.prevChildKey = prevChildKey;
 
+                $(".openk-contents").empty();
                 domSelf.render(snap.key(), snap.val());
 
                 /* $('.pagination ul li a').on('click', function(ev) {
