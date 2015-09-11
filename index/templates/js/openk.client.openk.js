@@ -110,7 +110,7 @@ $(document).ready(function () {
 
                             var $postContent = $('<div class="text">' +
                                 '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
-                                '<span class="date">' + $thread.totalCount + ' Clicks</span>' +
+                                '<span class="date">' + (-1 * $thread.totalCount) + ' Clicks</span>' +
                                 '<p>' + $thread.description + '</p></div>' +
                                 '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6></div>' +
                                 '<a class="plus_wrapper text-right" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#" style="margin-top:2em; background-color:#e0e0e0;">' +
