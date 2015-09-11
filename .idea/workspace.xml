@@ -34,8 +34,8 @@
       <file leaf-file-name="openk.client.openk.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index/templates/js/openk.client.openk.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6086956">
-              <caret line="210" column="38" selection-start-line="210" selection-start-column="38" selection-end-line="210" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.4347826">
+              <caret line="73" column="87" selection-start-line="73" selection-start-column="87" selection-end-line="73" selection-end-column="87" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -757,8 +757,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index/templates/js/openk.client.openk.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6086956">
-          <caret line="210" column="38" selection-start-line="210" selection-start-column="38" selection-end-line="210" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.4347826">
+          <caret line="73" column="87" selection-start-line="73" selection-start-column="87" selection-end-line="73" selection-end-column="87" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

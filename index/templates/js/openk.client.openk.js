@@ -71,7 +71,7 @@ $(document).ready(function () {
 
         $(".pagination ul").empty();
 
-        fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(15).on("child_added", function(threadSnap) {
+        fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(15).once("value", function(threadSnap) {
             if ($loading) $loading.modal('hide');
             if (threadSnap.val()) {
                 domSelf.threads = threadSnap.val();
