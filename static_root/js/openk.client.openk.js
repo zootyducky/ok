@@ -71,7 +71,7 @@ $(document).ready(function () {
 
         $(".pagination ul").empty();
 
-        fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(15).once("value", function(threadSnap) {
+        fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(30).once("value", function(threadSnap) {
             if ($loading) $loading.modal('hide');
             if (threadSnap.val()) {
                 domSelf.threads = threadSnap.val();
@@ -192,13 +192,13 @@ $(document).ready(function () {
                     , "subject": subject
                     , "URL": url
                     , "description": description
-                    , "inDate": (-1 * parseInt(Firebase.ServerValue.TIMESTAMP))
+                    , "inDate": (Firebase.ServerValue.TIMESTAMP)
                     , "dailyCount": 0
                     , "weeklyCount": 0
                     , "totalCount": 0
                 };
 
-                //$target.setPriority(-1 * Firebase.ServerValue.TIMESTAMP);
+                $target.setPriority(Firebase.ServerValue.TIMESTAMP);
                 $target.push($thread);
                 fbase.child(fver + "/threadCount/").transaction(function(currentCount) {
                     return currentCount + 1;

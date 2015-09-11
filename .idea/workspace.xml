@@ -35,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/index/templates/js/openk.client.openk.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="90" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+              <caret line="80" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -748,7 +748,7 @@
     <entry file="file://$PROJECT_DIR$/index/templates/js/openk.client.openk.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <caret line="80" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
