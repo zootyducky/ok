@@ -92,10 +92,10 @@ $(document).ready(function () {
                 $(".pagination ul").append('<li><a href="#" data-page="next">Next</a></li>');
             } */
 
+            $(".openk-contents").empty();
+
             fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(750).on("child_added", function(snap, prevChildKey) {
                 domSelf.prevChildKey = prevChildKey;
-
-                $(".openk-contents").empty();
                 domSelf.render(snap.key(), snap.val());
 
                 /* $('.pagination ul li a').on('click', function(ev) {
@@ -115,30 +115,27 @@ $(document).ready(function () {
     });
 
     domSelf.render = function(key, val) {
+        domSelf.idx = domSelf.idx || 0;
+        var threadKey = key;
+        var $thread = val;
 
-        var idx = 0
-        //$.each(threads, function(key, val) {
-            var threadKey = key;
-            var $thread = val;
+        if (domSelf.idx % 3 == 0) $('.openk-contents').append('<div class="row post_row"></div>');
 
-            if (idx % 3 == 0) $('.openk-contents').append('<div class="row post_row"></div>');
+        var $post = $('<div class="span4 post"></div>');
+        if (domSelf.idx % 3 == 2) $post.addClass("last");
 
-            var $post = $('<div class="span4 post"></div>');
-            if (idx % 3 == 2) $post.addClass("last");
+        var $postContent = $('<div class="text">' +
+            '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
+            '<span class="date">' + (-1 * $thread.totalCount) + ' Clicks</span>' +
+            '<p>' + $thread.description + '</p></div>' +
+            '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6></div>' +
+            '<a class="plus_wrapper text-right" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#" style="margin-top:2em; background-color:#e0e0e0;">' +
+            '<span>채팅 열기</span></a>');
+        $post.append($postContent);
 
-            var $postContent = $('<div class="text">' +
-                '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
-                '<span class="date">' + (-1 * $thread.totalCount) + ' Clicks</span>' +
-                '<p>' + $thread.description + '</p></div>' +
-                '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6></div>' +
-                '<a class="plus_wrapper text-right" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#" style="margin-top:2em; background-color:#e0e0e0;">' +
-                '<span>채팅 열기</span></a>');
-            $post.append($postContent);
+        $('.openk-contents .post_row:last-child').append($post);
 
-            $('.openk-contents .post_row:last-child').append($post);
-
-            idx++;
-        //});
+        domSelf.idx++;
 
         $('.openk-contents .post_row a').on("click", function(ev) {
             ev.preventDefault();
