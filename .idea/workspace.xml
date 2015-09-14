@@ -31,36 +31,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="openk.client.openk.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index/templates/js/openk.client.openk.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35511714">
-              <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.041667">
-              <caret line="127" column="38" selection-start-line="127" selection-start-column="38" selection-end-line="127" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.2858958">
+              <caret line="15" column="84" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="openk.client.openk.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static_root/js/openk.client.openk.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="192" selection-end-column="7" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -80,9 +56,9 @@
         <option value="$PROJECT_DIR$/index/templates/js/openk.client.js" />
         <option value="$PROJECT_DIR$/index/templates/css/openKakao.css" />
         <option value="$PROJECT_DIR$/openKakao/settings.py" />
-        <option value="$PROJECT_DIR$/index/templates/index.html" />
         <option value="$PROJECT_DIR$/static_root/js/openk.client.openk.js" />
         <option value="$PROJECT_DIR$/index/templates/js/openk.client.openk.js" />
+        <option value="$PROJECT_DIR$/index/templates/index.html" />
       </list>
     </option>
   </component>
@@ -800,17 +776,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/index/templates/js/openk.client.openk.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.041667">
-          <caret line="127" column="38" selection-start-line="127" selection-start-column="38" selection-end-line="127" selection-end-column="38" />
-          <folding />
+        <state vertical-scroll-proportion="0.05548705">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static_root/js/openk.client.openk.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.33415535">
           <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="192" selection-end-column="7" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -818,13 +796,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index/templates/js/openk.client.openk.js">
+    <entry file="file://$PROJECT_DIR$/index/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35511714">
-          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.2858958">
+          <caret line="15" column="84" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
+          <folding />
         </state>
       </provider>
     </entry>
