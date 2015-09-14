@@ -137,6 +137,7 @@ $(document).ready(function () {
 
         domSelf.idx++;
 
+        $('.openk-contents .post_row a').off("click");
         $('.openk-contents .post_row a').on("click", function(ev) {
             ev.preventDefault();
 
