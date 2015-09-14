@@ -184,6 +184,14 @@ $(document).ready(function () {
         if (ev.which == 13) $(this).parent().parent().children('button').trigger("click");
     });
 
+    $('#footer .credits .social .facebook').on('click', function(ev) {
+        ev.preventDefault()
+        FB.ui({
+          method: 'share',
+          href: 'http://chatkakao.com',
+        }, function(response) {});
+    });
+
     $('.submit-box .form button').on("click", function() {
         var subject = $('input#add_subject').val();
         var url = $('input#add_url').val();
