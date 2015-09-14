@@ -53,8 +53,6 @@ $(document).ready(function () {
 
     $(".openk-sort ul.nav-tabs li a").on("click", function(ev) {
         ev.preventDefault();
-
-
         domSelf.threads = {};
 
         if ($(this).parent().data('sort') == 'hot') {
@@ -74,101 +72,107 @@ $(document).ready(function () {
         $(".pagination ul").empty();
 
         fbase.child(fver + "/threadCount/").once("value", function(cntSnap) {
-            if ($loading) $loading.modal('hide');
-
             domSelf.threadCount = cntSnap.val();
             domSelf.pageCount = domSelf.pageCount || Math.ceil(domSelf.threadCount / 15);
 
-            /* for (var i = 1; i <= domSelf.pageCount; i++) {
+            for (var i = 1; i <= domSelf.pageCount; i++) {
                 var pageRev = Math.floor(domSelf.page / 10);
                 var $liPage = '<li><a href="#" data-page="' + (i + pageRev * 10).toString() + '">' + (i + pageRev * 10).toString() + '</a></li>'
                 $(".pagination ul").append($liPage);
             }
 
-            if (domSelf.page == 1) {
+            /* if (domSelf.page < 10 && domSelf.pageCount > 10) {
                 $(".pagination ul").append('<li><a href="#" data-page="next">Next</a></li>');
-            } else if (domSelf.page == domSelf.pageCount) {
+            } else if (domSelf.page > 10) {
                 $(".pagination ul").prepend('<li><a href="#" data-page="prev">Prev</a></li>');
             } else {
                 $(".pagination ul").prepend('<li><a href="#" data-page="prev">Prev</a></li>');
                 $(".pagination ul").append('<li><a href="#" data-page="next">Next</a></li>');
             } */
 
-            fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(750).on("child_added", function(snap, prevChildKey) {
-                domSelf.prevChildKey = prevChildKey;
+            $('.pagination ul li a').on('click', function(ev) {
+                ev.preventDefault();
 
-                $(".openk-contents").empty();
-                domSelf.render(snap.key(), snap.val());
+                if ($(this).data('page') != 'next' || $(this).data('page') != 'prev') {
+                    domSelf.page = $(this).data('page');
 
-                /* $('.pagination ul li a').on('click', function(ev) {
+                    //var startIdx = (domSelf.page - 1) * 15;
+                    //var endIdx = (domSelf.page * 15 > threadCnt) ? threadCnt : domSelf.page * 15 - 1;
+                }
+
+            })
+        });
+
+        fbase.child(fver + "/threads/").orderByChild(sort).limitToFirst(30).once("value", function(threadSnap) {
+            if ($loading) $loading.modal('hide');
+            if (threadSnap.val()) {
+                domSelf.threads = threadSnap.val();
+                domSelf.threadKeys = Object.keys(domSelf.threads);
+
+                $('.pagination ul li a').on('click', function(ev) {
                     ev.preventDefault();
                     $(".openk-contents").empty();
 
-                    if ($(this).data('page') == 'next') domSelf.page = domSelf.page + 1;
-                    else domSelf.page = domSelf.page - 1;
+                    if ($(this).data('page') != 'next' || $(this).data('page') != 'prev') {
+                        domSelf.page = $(this).data('page');
+                        var threadCnt = domSelf.threadKeys.length;
+                        var startIdx = (domSelf.page - 1) * 15;
+                        var endIdx = (domSelf.page * 15 > threadCnt) ? threadCnt : domSelf.page * 15 - 1;
+                        var pageKeys = domSelf.threadKeys.slice(startIdx, endIdx);
 
-                    fbase.child(fver + "/threads/").orderByChild(sort).startAt(domSelf.prevChildKey).limitToFirst(15).on("child_added", function(snap, prevChildKey) {
+                        $.each(pageKeys, function(idx, threadKey) {
+                            var $thread = domSelf.threads[threadKey];
 
-                    });
-                }); */
-            });
-        });
+                            if (idx % 3 == 0) $('.openk-contents').append('<div class="row post_row"></div>');
 
-    });
+                            var $post = $('<div class="span4 post"></div>');
+                            if (idx % 3 == 2 || idx == pageKeys.length) $post.addClass("last");
 
-    domSelf.render = function(key, val) {
+                            var $postContent = $('<div class="text">' +
+                                '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
+                                '<span class="date">' + (-1 * $thread.totalCount) + ' Clicks</span>' +
+                                '<p>' + $thread.description + '</p></div>' +
+                                '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6></div>' +
+                                '<a class="plus_wrapper text-right" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#" style="margin-top:2em; background-color:#e0e0e0;">' +
+                                '<span>채팅 열기</span></a>');
+                            $post.append($postContent);
 
-        var idx = 0
-        //$.each(threads, function(key, val) {
-            var threadKey = key;
-            var $thread = val;
+                            $('.openk-contents .post_row:last-child').append($post);
+                        });
 
-            if (idx % 3 == 0) $('.openk-contents').append('<div class="row post_row"></div>');
+                        $('.openk-contents .post_row a').on("click", function(ev) {
+                                ev.preventDefault();
 
-            var $post = $('<div class="span4 post"></div>');
-            if (idx % 3 == 2) $post.addClass("last");
-
-            var $postContent = $('<div class="text">' +
-                '<h5><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.subject + '</a></h5>' +
-                '<span class="date">' + (-1 * $thread.totalCount) + ' Clicks</span>' +
-                '<p>' + $thread.description + '</p></div>' +
-                '<div class="author_box"><h6><a data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#">' + $thread.URL + '</a></h6></div>' +
-                '<a class="plus_wrapper text-right" data-key="' + threadKey + '" data-url="' + $thread.URL + '" href="#" style="margin-top:2em; background-color:#e0e0e0;">' +
-                '<span>채팅 열기</span></a>');
-            $post.append($postContent);
-
-            $('.openk-contents .post_row:last-child').append($post);
-
-            idx++;
-        //});
-
-        $('.openk-contents .post_row a').on("click", function(ev) {
-            ev.preventDefault();
-
-            var okUrl = $(this).data('url');
-            var $target = fbase.child(fver + "/threads/" + $(this).data("key"));
-            $target.child("dailyCount").transaction(function(currentSnap) {
-                return currentSnap - 1;
-            });
-            $target.child("weeklyCount").transaction(function(currentSnap) {
-                return currentSnap - 1;
-            });
-            $target.child("totalCount").transaction(function(currentSnap) {
-                return currentSnap - 1;
-            }, function(err, committed, cntSnap) {
-                openk.util.notification("잠깐! 친구들을 위해 Facebook으로 공유해주시겠어요?", function() {
-                    FB.ui({
-                      method: 'share',
-                      href: 'http://chatkakao.com',
-                    }, function(response){
-                        location.href = okUrl;
-                    });
-                }, function() {
-                    location.href = okUrl;
+                            var okUrl = $(this).data('url');
+                            var $target = fbase.child(fver + "/threads/" + $(this).data("key"));
+                            $target.child("dailyCount").transaction(function(currentSnap) {
+                                return currentSnap - 1;
+                            });
+                            $target.child("weeklyCount").transaction(function(currentSnap) {
+                                return currentSnap - 1;
+                            });
+                            $target.child("totalCount").transaction(function(currentSnap) {
+                                return currentSnap - 1;
+                            }, function(err, committed, cntSnap) {
+                                openk.util.notification("잠깐! 친구들을 위해 Facebook으로 공유해주시겠어요?", function() {
+                                    FB.ui({
+                                      method: 'share',
+                                      href: 'http://chatkakao.com',
+                                    }, function(response){
+                                        location.href = okUrl;
+                                    });
+                                }, function() {
+                                    location.href = okUrl;
+                                });
+                            });
+                        });
+                    }
                 });
-            });
+
+                $('.pagination ul li a[data-page="' + domSelf.page + '"]').trigger('click');
+            }
         });
-    };
+    });
 
     $('input#add_subject').keypress(function(ev) {
         if (ev.which == 13) $('input#add_url').focus();
