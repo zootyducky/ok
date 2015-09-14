@@ -56,7 +56,7 @@ $(document).ready(function () {
         domSelf.threads = {};
 
         if ($(this).parent().data('sort') == 'hot') {
-            openk.util.notification("잠깐! 친구들을 위해 Facebook으로 공유해주시겠어요?", function() {
+            openk.util.notification("친구들을 위해 Facebook으로 공유해주시겠어요?", function() {
                 FB.ui({
                   method: 'share',
                   href: 'http://chatkakao.com',
@@ -152,7 +152,7 @@ $(document).ready(function () {
             $target.child("totalCount").transaction(function(currentSnap) {
                 return currentSnap - 1;
             }, function(err, committed, cntSnap) {
-                openk.util.notification("잠깐! 친구들을 위해 Facebook으로 공유해주시겠어요?", function() {
+                openk.util.notification("친구들을 위해 Facebook으로 공유해주시겠어요?", function() {
                     FB.ui({
                       method: 'share',
                       href: 'http://chatkakao.com',
